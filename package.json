@@ -1,12 +1,19 @@
 {
-  "name": "naloga-7-1",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "name": "blockly-generator-demo",
+  "version": "0.0.0",
+  "private": true,
+  "blocklyDemoConfig": {
+    "title": "Generate JavaScript",
+    "description": "Turn blocks into code and execute it.",
+    "files": [
+      "index.html",
+      "./node_modules/blockly/*_compressed.js",
+      "./node_modules/blockly/*_compressed.js.map",
+      "./node_modules/blockly/msg/en.js",
+      "./node_modules/blockly/media/*"
+    ]
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": ""
+  "dependencies": {
+    "blockly": "^12.0.0"
+  }
 }
