@@ -1,0 +1,53 @@
+<xml>
+    <block type="program" id="N0uKCLX8^ff6boX,~V[z" x="0" y="0">
+        <next>
+            <block type="controls_repeat_ext" id="vAQ9DLw_=P6c,P;=l3)4">
+                <value name="TIMES">
+                    <block type="math_number" id="L{3E9%!(D_$/K2Er`^K`">
+                        <field name="NUM">4</field>
+                    </block>
+                </value>
+                <statement name="DO">
+                    <block type="moveUp" id="XFj3GH:kh]V3trV4.Pl|"></block>
+                </statement>
+                <next>
+                    <block type="controls_repeat_ext" id="2KaUl;,Zu.MLG(2WONx|">
+                        <value name="TIMES">
+                            <block type="math_number" id="_8Gawm1_efg;C$rGk/Iw">
+                                <field name="NUM">9</field>
+                            </block>
+                        </value>
+                        <statement name="DO">
+                            <block type="moveRight" id="-$uc}7)P?9?a|e*5jbm#"></block>
+                        </statement>
+                        <next>
+                            <block type="controls_repeat_ext" id="=e`Bgx1.va#d.Z!=]FMX">
+                                <value name="TIMES">
+                                    <block type="math_number" id="AEaNY[Uh9((To(=H_crg">
+                                        <field name="NUM">4</field>
+                                    </block>
+                                </value>
+                                <statement name="DO">
+                                    <block type="controls_if" id="l7m!|DW:}7uBY^+e.8x!">
+                                        <value name="IF0">
+                                            <block type="isPresent" id="0=QwAKHvge=f]P$6z^`7"></block>
+                                        </value>
+                                        <statement name="DO0">
+                                            <block type="pickup" id="^?g/;pc$|rB_e`p|-{^@"></block>
+                                        </statement>
+                                        <next>
+                                            <block type="moveDown" id="r[.{b.lZB/x@CyOBe+oB"></block>
+                                        </next>
+                                    </block>
+                                </statement>
+                                <next>
+                                    <block type="moveLeft" id="mq:43UMn:7(70RNcb:ST"></block>
+                                </next>
+                            </block>
+                        </next>
+                    </block>
+                </next>
+            </block>
+        </next>
+    </block>
+</xml>

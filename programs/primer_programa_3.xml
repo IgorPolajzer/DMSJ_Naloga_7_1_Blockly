@@ -1,0 +1,78 @@
+<xml>
+    <block type="program" id="5u6Wi{GE.(JZ2VNuctQ8" x="0" y="0">
+        <next>
+            <block type="controls_repeat_ext" id="Uj@:=8?_qmvB$:C.y)/L">
+                <value name="TIMES">
+                    <block type="math_number" id="gsJB,X!p/^DF!l2J/*uh">
+                        <field name="NUM">7</field>
+                    </block>
+                </value>
+                <statement name="DO">
+                    <block type="moveLeft" id=";|,;2U2F$};+-xyOSCoW"></block>
+                </statement>
+                <next>
+                    <block type="controls_repeat_ext" id="f$Fm:P-_Vx]5]Pf$ti;`">
+                        <value name="TIMES">
+                            <block type="math_number" id="r5[8.].!=#xkM4|v$C*M">
+                                <field name="NUM">3</field>
+                            </block>
+                        </value>
+                        <statement name="DO">
+                            <block type="controls_if" id="9Fs`je=V/$37~W~}:kFB">
+                                <value name="IF0">
+                                    <block type="isPresent" id="rnPsrhP`}-(e)Rw]f?5t"></block>
+                                </value>
+                                <statement name="DO0">
+                                    <block type="pickup" id="4?MBmYci_r602yTP,)!h"></block>
+                                </statement>
+                                <next>
+                                    <block type="moveDown" id="j2#}6e#L7)M6h%Y|Q6%O"></block>
+                                </next>
+                            </block>
+                        </statement>
+                        <next>
+                            <block type="controls_repeat_ext" id="0VKJ:c{VT;*K!p58:jU%">
+                                <value name="TIMES">
+                                    <block type="math_number" id=")ZKvanHo-N`oj/,I,^)w">
+                                        <field name="NUM">7</field>
+                                    </block>
+                                </value>
+                                <statement name="DO">
+                                    <block type="moveRight" id="]pIK*@QKZ!`K1uD#P*S("></block>
+                                </statement>
+                                <next>
+                                    <block type="pickup" id="rzr)0pA(!XWD}%y_,cSS">
+                                        <next>
+                                            <block type="controls_repeat_ext" id="zx;n(y6$8%uyz*Lt3q%w">
+                                                <value name="TIMES">
+                                                    <block type="math_number" id="^HUNKro/P2gH/i8F%8KT">
+                                                        <field name="NUM">4</field>
+                                                    </block>
+                                                </value>
+                                                <statement name="DO">
+                                                    <block type="moveDown" id="O?+xBFIO_c6|e!=DbrJ("></block>
+                                                </statement>
+                                                <next>
+                                                    <block type="controls_repeat_ext" id="Qvi65kP}mn{iU,pmooX,">
+                                                        <value name="TIMES">
+                                                            <block type="math_number" id="*FCSD.,[#k$x%`3cp2m9">
+                                                                <field name="NUM">2</field>
+                                                            </block>
+                                                        </value>
+                                                        <statement name="DO">
+                                                            <block type="moveLeft" id="v]Fq.YNSnWEx=Z-s;X@c"></block>
+                                                        </statement>
+                                                    </block>
+                                                </next>
+                                            </block>
+                                        </next>
+                                    </block>
+                                </next>
+                            </block>
+                        </next>
+                    </block>
+                </next>
+            </block>
+        </next>
+    </block>
+</xml>

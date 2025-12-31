@@ -1,0 +1,72 @@
+<xml>
+    <block type="program" id="{FMQ]kuHNPuB8ojf(zh=" x="0" y="0">
+        <next>
+            <block type="moveRight" id="B$Yq(f0XnGc`ng*9DBt.">
+                <next>
+                    <block type="moveRight" id="l#4_.dBim+R_hjS:O|!~">
+                        <next>
+                            <block type="moveRight" id="`_I-jY~JZ~$RI~@4eEO5">
+                                <next>
+                                    <block type="controls_repeat_ext" id="=8tZ~a#{8op|g4iDwjRj">
+                                        <value name="TIMES">
+                                            <block type="math_number" id="jWQ5_41p0PF:OJ$VjHZ%">
+                                                <field name="NUM">8</field>
+                                            </block>
+                                        </value>
+                                        <statement name="DO">
+                                            <block type="controls_if" id="E$(?%9rNp?[my*Q$O*Bu">
+                                                <value name="IF0">
+                                                    <block type="isPresent" id=",cOt$fA{3i8k(;_$[2Lg"></block>
+                                                </value>
+                                                <statement name="DO0">
+                                                    <block type="pickup" id="I,[8kLXVWn}f(zh.WB$a"></block>
+                                                </statement>
+                                                <next>
+                                                    <block type="moveDown" id="PUUhOA@LS%,r{5@jKTh~"></block>
+                                                </next>
+                                            </block>
+                                        </statement>
+                                        <next>
+                                            <block type="controls_repeat_ext" id="d3?U(Wr[{40Ee}F1eHn(">
+                                                <value name="TIMES">
+                                                    <block type="math_number" id="U}dTp)zi(,AU.Hi@V/1%">
+                                                        <field name="NUM">5</field>
+                                                    </block>
+                                                </value>
+                                                <statement name="DO">
+                                                    <block type="controls_if" id=".qybW$bCl)jJu_S~~pfK">
+                                                        <value name="IF0">
+                                                            <block type="isPresent" id="T:3$d;A1Jz[RXzHD~@?Q"></block>
+                                                        </value>
+                                                        <statement name="DO0">
+                                                            <block type="pickup" id="T%U0LDF1F,[(ZQjYs=$p"></block>
+                                                        </statement>
+                                                        <next>
+                                                            <block type="moveLeft" id="$C_cu(yx18qWSBj2A]C}"></block>
+                                                        </next>
+                                                    </block>
+                                                </statement>
+                                                <next>
+                                                    <block type="controls_repeat_ext" id="j*C*+30H0K0:#l(aaB~s">
+                                                        <value name="TIMES">
+                                                            <block type="math_number" id="#Y0I5ESpTO~$R#fsrVjp">
+                                                                <field name="NUM">6</field>
+                                                            </block>
+                                                        </value>
+                                                        <statement name="DO">
+                                                            <block type="moveUp" id="DVPIPCu4F?zk@)RxI*t;"></block>
+                                                        </statement>
+                                                    </block>
+                                                </next>
+                                            </block>
+                                        </next>
+                                    </block>
+                                </next>
+                            </block>
+                        </next>
+                    </block>
+                </next>
+            </block>
+        </next>
+    </block>
+</xml>
