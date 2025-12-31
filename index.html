@@ -1,271 +1,199 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8" />
+<head>
+    <meta charset="utf-8"/>
     <title>Blockly Demo: Generating JavaScript</title>
     <script src="./node_modules/blockly/blockly_compressed.js"></script>
     <script src="./node_modules/blockly/blocks_compressed.js"></script>
     <script src="./node_modules/blockly/javascript_compressed.js"></script>
     <script src="./node_modules/blockly/msg/en.js"></script>
-
+    <script src="movements.js"></script>
+    <script src="movements-gen.js"></script>
     <style>
-      body {
-        background-color: #fff;
-        font-family: sans-serif;
-      }
-      h1 {
-        font-weight: normal;
-        font-size: 140%;
-      }
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            background-color: #fff;
+            font-family: sans-serif;
+        }
+
+        h1 {
+            font-weight: normal;
+            font-size: 140%;
+        }
+
+        #table {
+            height: 100%;
+            width: 100%;
+        }
+
+        #blocklyArea {
+            height: 99%;
+        }
+
+        img {
+            display: block;
+        }
+
+        table,
+        tr,
+        td,
+        img {
+            margin: 0;
+            padding: 0;
+            border: none;
+            border-collapse: collapse;
+        }
+
+        .center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #field td {
+            position: relative;
+        }
+
+        #field img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 50px;
+            width: 50px;
+        }
+
+        #field img:first-child {
+            position: relative;
+        }
     </style>
-  </head>
-  <body>
-    <p>
-      This is a simple demo of generating code from blocks and running the code
-      using eval.
-    </p>
+</head>
 
-    <p>
-      &rarr; More info on
-      <a
-        href="https://developers.google.com/blockly/guides/create-custom-blocks/code-generation/overview"
-        >Code Generators</a
-      >
-      and
-      <a
-        href="https://developers.google.com/blockly/guides/app-integration/running-javascript"
-        >Running JavaScript</a
-      >.
-    </p>
+<body>
+<table id="table">
+    <tr>
+        <td>
+            <h2>DSMJ naloga 7.1</h2>
+        </td>
+    </tr>
+    <tr>
+        <td style="padding: 10px;">
+            <button onclick="exportCode()">Izvozi</button>
+            <button onclick="importCode()">Uvozi</button>
+            <input id="textinput" type="text"/>
+            <button onclick="startAgain()">Ponovi</button>
+        </td>
+        <td style="padding: 20px;">
+            <button onclick="showCode()">Koda</button>
+            <button onclick="runCode()">Start</button>
+        </td>
+    </tr>
+    <tr>
+        <td width="50%" height="100%">
+            <div id="blocklyDiv" style="height: 100%; width: 100%;"></div>
+        </td>
+        <td style="padding: 20px;position: relative;">
+            <div class="left">
+                <table id="field"></table>
+            </div>
+        </td>
+    </tr>
+</table>
 
-    <p>
-      <button onclick="showCode()">Show JavaScript</button>
-      <button onclick="runCode()">Run JavaScript</button>
-    </p>
 
-    <div id="blocklyDiv" style="height: 480px; width: 600px"></div>
-
-    <script>
-      var toolbox = {
+<script>
+    var toolbox = {
         kind: 'categoryToolbox',
         contents: [
-          {
-            kind: 'category',
-            name: 'Logic',
-            categorystyle: 'logic_category',
-            contents: [
-              {
-                kind: 'block',
-                type: 'controls_if',
-              },
-              {
-                kind: 'block',
-                type: 'logic_compare',
-              },
-              {
-                kind: 'block',
-                type: 'logic_operation',
-              },
-              {
-                kind: 'block',
-                type: 'logic_negate',
-              },
-              {
-                kind: 'block',
-                type: 'logic_boolean',
-              },
-            ],
-          },
-          {
-            kind: 'category',
-            name: 'Loops',
-            categorystyle: 'loop_category',
-            contents: [
-              {
-                kind: 'block',
-                type: 'controls_repeat_ext',
-                inputs: {
-                  TIMES: {
-                    block: {
-                      type: 'math_number',
-                      fields: {
-                        NUM: 10,
-                      },
+            {
+                kind: 'category',
+                name: 'Movements',
+                categorystyle: 'logic_category',
+                contents: [
+                    {
+                        kind: 'block',
+                        type: 'moveRight',
                     },
-                  },
-                },
-              },
-              {
-                kind: 'block',
-                type: 'controls_whileUntil',
-              },
-            ],
-          },
-          {
-            kind: 'category',
-            name: 'Math',
-            categorystyle: 'math_category',
-            contents: [
-              {
-                kind: 'block',
-                type: 'math_number',
-                fields: {
-                  NUM: 123,
-                },
-              },
-              {
-                kind: 'block',
-                type: 'math_arithmetic',
-              },
-              {
-                kind: 'block',
-                type: 'math_single',
-              },
-            ],
-          },
-          {
-            kind: 'category',
-            name: 'Text',
-            categorystyle: 'text_category',
-            contents: [
-              {
-                kind: 'block',
-                type: 'text',
-              },
-              {
-                kind: 'block',
-                type: 'text_length',
-              },
-              {
-                kind: 'block',
-                type: 'text_print',
-              },
-            ],
-          },
+                    {
+                        kind: 'block',
+                        type: 'moveLeft',
+                    },
+                    {
+                        kind: 'block',
+                        type: 'moveUp',
+                    },
+                    {
+                        kind: 'block',
+                        type: 'moveDown',
+                    }
+                ],
+            },
+            {
+                kind: 'category',
+                name: 'Logic',
+                categorystyle: 'loop_category',
+                contents: [
+                    {
+                        kind: 'block',
+                        type: 'program'
+                    },
+                    {
+                        kind: 'block',
+                        type: 'controls_repeat_ext',
+                        inputs: {
+                            TIMES: {
+                                block: {
+                                    type: 'math_number',
+                                    fields: {
+                                        NUM: 10,
+                                    },
+                                },
+                            },
+                        },
+                    },
+                    {
+                        kind: 'block',
+                        type: 'controls_whileUntil',
+                    },
+                    {
+                        kind: 'block',
+                        type: 'controls_if',
+                    },
+                    {
+                        kind: 'block',
+                        type: 'math_number',
+                        fields: {
+                            NUM: 123,
+                        },
+                    }
+                ],
+            }
         ],
-      };
+    };
 
-      var demoWorkspace = Blockly.inject('blocklyDiv', {
+    var demoWorkspace = Blockly.inject('blocklyDiv', {
         media: './node_modules/blockly/media/',
         toolbox: toolbox,
-      });
+    });
 
-      var startBlocks = {
+    var startBlocks = {
         blocks: {
-          languageVersion: 0,
-          blocks: [
-            {
-              type: 'controls_if',
-              inline: false,
-              extraState: {
-                hasElse: true,
-              },
-              inputs: {
-                IF0: {
-                  block: {
-                    type: 'logic_compare',
-                    fields: {
-                      OP: 'EQ',
-                    },
-                    inputs: {
-                      A: {
-                        block: {
-                          type: 'math_arithmetic',
-                          fields: {
-                            OP: 'MULTIPLY',
-                          },
-                          inputs: {
-                            A: {
-                              block: {
-                                type: 'math_number',
-                                fields: {
-                                  NUM: 6,
-                                },
-                              },
-                            },
-                            B: {
-                              block: {
-                                type: 'math_number',
-                                fields: {
-                                  NUM: 7,
-                                },
-                              },
-                            },
-                          },
-                        },
-                      },
-                      B: {
-                        block: {
-                          type: 'math_number',
-                          fields: {
-                            NUM: 42,
-                          },
-                        },
-                      },
-                    },
-                  },
+            languageVersion: 0,
+            blocks: [
+                {
+                    type: 'program',
                 },
-                DO0: {
-                  block: {
-                    type: 'text_print',
-                    inline: false,
-                    inputs: {
-                      TEXT: {
-                        block: {
-                          type: 'text',
-                          fields: {
-                            TEXT: "Don't panic",
-                          },
-                        },
-                      },
-                    },
-                  },
-                },
-                ELSE: {
-                  block: {
-                    type: 'text_print',
-                    inline: false,
-                    inputs: {
-                      TEXT: {
-                        block: {
-                          type: 'text',
-                          fields: {
-                            TEXT: 'Panic',
-                          },
-                        },
-                      },
-                    },
-                  },
-                },
-              },
-            },
-          ],
+            ]
         },
-      };
-      Blockly.serialization.workspaces.load(startBlocks, demoWorkspace);
+    };
+    Blockly.serialization.workspaces.load(startBlocks, demoWorkspace);
+</script>
 
-      function showCode() {
-        // Generate JavaScript code and display it.
-        javascript.javascriptGenerator.INFINITE_LOOP_TRAP = null;
-        var code =
-          javascript.javascriptGenerator.workspaceToCode(demoWorkspace);
-        alert(code);
-      }
-
-      function runCode() {
-        // Generate JavaScript code and run it.
-        window.LoopTrap = 1000;
-        javascript.javascriptGenerator.INFINITE_LOOP_TRAP =
-          'if (--window.LoopTrap < 0) throw "Infinite loop.";\n';
-        var code =
-          javascript.javascriptGenerator.workspaceToCode(demoWorkspace);
-        javascript.javascriptGenerator.INFINITE_LOOP_TRAP = null;
-        try {
-          eval(code);
-        } catch (e) {
-          alert(e);
-        }
-      }
-    </script>
-  </body>
+<script src="workspace.js"></script>
+</body>
 </html>
