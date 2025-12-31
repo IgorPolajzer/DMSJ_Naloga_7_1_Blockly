@@ -48,6 +48,15 @@ Blockly.defineBlocksWithJsonArray([
     "colour": 300,
     "tooltip": "Move down",
     "helpUrl": ""
+  },
+    {
+    "type": "pickup",
+    "lastDummyAlign0": "CENTRE",
+    "message0": "Pickup",
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 300,
+    "tooltip": "Pickup present",
+    "helpUrl": ""
   }
-
 ]);

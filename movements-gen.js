@@ -3,21 +3,26 @@
 const checkDrawSleep = 'draw(); \nawait sleep(300);\n';
 
 Blockly.JavaScript['moveRight'] = function (block) {
-  return 'if (rx < w - 1)  rx = rx + 1;\n' + checkDrawSleep;
+  return 'if (santaX < w - 1)  santaX = santaX + 1;\n' + checkDrawSleep;
 };
 
 Blockly.JavaScript['moveLeft'] = function (block) {
-  return 'if (rx > 0) rx = rx - 1;\n' + checkDrawSleep;
+  return 'if (santaX > 0) santaX = santaX - 1;\n' + checkDrawSleep;
 };
 
 Blockly.JavaScript['moveUp'] = function (block) {
-  return 'if (ry > 0) ry = ry - 1;\n' + checkDrawSleep;
+  return 'if (santaY > 0) santaY = santaY - 1;\n' + checkDrawSleep;
 };
 
 Blockly.JavaScript['moveDown'] = function (block) {
-  return 'if (ry < h - 1) ry = ry + 1;\n' + checkDrawSleep;
+  return 'if (santaY < h - 1) santaY = santaY + 1;\n' + checkDrawSleep;
 };
 
+Blockly.JavaScript['pickup'] = function (block) {
+  return 'pickupPresent();';
+};
+
+
 Blockly.JavaScript['program'] = function (block) {
-  return ''; // nothing to declare
+  return 'if (blocks.length > 0 && blocks[0].type === \'program\') { startedWithProgram = true; }\n';
 };
