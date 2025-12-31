@@ -7,8 +7,8 @@
     <script src="./node_modules/blockly/blocks_compressed.js"></script>
     <script src="./node_modules/blockly/javascript_compressed.js"></script>
     <script src="./node_modules/blockly/msg/en.js"></script>
-    <script src="movements.js"></script>
-    <script src="movements-gen.js"></script>
+    <script src="blocks.js"></script>
+    <script src="blocks-gen.js"></script>
     <style>
         html,
         body {
@@ -31,10 +31,6 @@
             width: 100%;
         }
 
-        #blocklyArea {
-            height: 99%;
-        }
-
         img {
             display: block;
         }
@@ -47,13 +43,6 @@
             padding: 0;
             border: none;
             border-collapse: collapse;
-        }
-
-        .center {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
         }
 
         #field td {
@@ -78,19 +67,19 @@
 <table id="table">
     <tr>
         <td>
-            <h2>DSMJ naloga 7.1</h2>
+            <h2>DSMJ assignment 7.1</h2>
         </td>
     </tr>
     <tr>
         <td style="padding: 10px;">
-            <button onclick="exportCode()">Izvozi</button>
-            <button onclick="importCode()">Uvozi</button>
+            <button onclick="exportCode()">Import</button>
+            <button onclick="importCode()">Export</button>
             <input id="textinput" type="text"/>
-            <button onclick="startAgain()">Ponovi</button>
+            <button onclick="startAgain()">New game</button>
         </td>
         <td style="padding: 20px;">
-            <button onclick="showCode()">Koda</button>
-            <button onclick="runCode()">Start</button>
+            <button onclick="showCode()">Show code</button>
+            <button onclick="runCode()">Start program</button>
         </td>
     </tr>
     <tr>
@@ -105,80 +94,55 @@
     </tr>
 </table>
 
-
 <script>
     var toolbox = {
-        kind: 'categoryToolbox',
-        contents: [
+        "kind": "categoryToolbox",
+        "contents": [
             {
-                kind: 'category',
-                name: 'Movements',
-                categorystyle: 'logic_category',
-                contents: [
-                    {
-                        kind: 'block',
-                        type: 'moveRight',
-                    },
-                    {
-                        kind: 'block',
-                        type: 'moveLeft',
-                    },
-                    {
-                        kind: 'block',
-                        type: 'moveUp',
-                    },
-                    {
-                        kind: 'block',
-                        type: 'moveDown',
-                    },
-                    {
-                        kind: 'block',
-                        type: 'pickup',
-                    }
-                ],
+                "kind": "category",
+                "name": "Program",
+                "categorystyle": "logic_category",
+                "contents": [
+                    {"kind": "block", "type": "program"}
+                ]
             },
             {
-                kind: 'category',
-                name: 'Logic',
-                categorystyle: 'loop_category',
-                contents: [
-                    {
-                        kind: 'block',
-                        type: 'program'
-                    },
-                    {
-                        kind: 'block',
-                        type: 'controls_repeat_ext',
-                        inputs: {
-                            TIMES: {
-                                block: {
-                                    type: 'math_number',
-                                    fields: {
-                                        NUM: 10,
-                                    },
-                                },
-                            },
-                        },
-                    },
-                    {
-                        kind: 'block',
-                        type: 'controls_whileUntil',
-                    },
-                    {
-                        kind: 'block',
-                        type: 'controls_if',
-                    },
-                    {
-                        kind: 'block',
-                        type: 'math_number',
-                        fields: {
-                            NUM: 123,
-                        },
-                    }
-                ],
+                "kind": "category",
+                "name": "Actions",
+                "colour": 160,
+                "contents": [
+                    {"kind": "block", "type": "moveRight"},
+                    {"kind": "block", "type": "moveLeft"},
+                    {"kind": "block", "type": "moveUp"},
+                    {"kind": "block", "type": "moveDown"},
+                    {"kind": "block", "type": "pickup"}
+                ]
+            },
+            {
+                "kind": "category",
+                "name": "Logic",
+                "colour": 210,
+                "contents": [
+                    {"kind": "block", "type": "controls_if"},
+                    {"kind": "block", "type": "controls_whileUntil"},
+                    {"kind": "block", "type": "controls_repeat_ext"}
+                ]
+            },
+            {
+                "kind": "category",
+                "name": "Variables & Conditions",
+                "colour": 230,
+                "contents": [
+                    {"kind": "block", "type": "variables_set"},
+                    {"kind": "block", "type": "variables_get"},
+                    {"kind": "block", "type": "math_number", "fields": {"NUM": 123}},
+                    {"kind": "block", "type": "isPresent"},
+                    {"kind": "block", "type": "isNotAPresent"}
+                ]
             }
-        ],
+        ]
     };
+
 
     var demoWorkspace = Blockly.inject('blocklyDiv', {
         media: './node_modules/blockly/media/',

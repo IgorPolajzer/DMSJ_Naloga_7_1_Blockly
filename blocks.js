@@ -10,6 +10,22 @@ Blockly.defineBlocksWithJsonArray([
     "helpUrl": ""
   },
   {
+    "type": "isPresent",
+    "message0": "there is a present here",
+    "output": "Boolean",
+    "colour": 230,
+    "tooltip": "Returns true if there is a present on Santa's current position",
+    "helpUrl": ""
+  },
+  {
+    "type": "isNotAPresent",
+    "message0": "there is no present here",
+    "output": "Boolean",
+    "colour": 230,
+    "tooltip": "Returns true if there is no present on Santa's current position",
+    "helpUrl": ""
+  },
+  {
     "type": "moveRight",
     "lastDummyAlign0": "CENTRE",
     "message0": "Right",
@@ -49,7 +65,7 @@ Blockly.defineBlocksWithJsonArray([
     "tooltip": "Move down",
     "helpUrl": ""
   },
-    {
+  {
     "type": "pickup",
     "lastDummyAlign0": "CENTRE",
     "message0": "Pickup",

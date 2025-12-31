@@ -22,7 +22,14 @@ Blockly.JavaScript['pickup'] = function (block) {
   return 'pickupPresent();';
 };
 
-
 Blockly.JavaScript['program'] = function (block) {
   return 'if (blocks.length > 0 && blocks[0].type === \'program\') { startedWithProgram = true; }\n';
+};
+
+Blockly.JavaScript['isPresent'] = function(block) {
+  return ['isPresent()', Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.JavaScript['isNotAPresent'] = function(block) {
+  return ['!isPresent()', Blockly.JavaScript.ORDER_LOGICAL_NOT];
 };

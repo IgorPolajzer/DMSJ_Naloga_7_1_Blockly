@@ -7,6 +7,7 @@ var presents = {};
 var startSantaX = 0;
 var startSantaY = 0;
 var field = new Array(h);
+
 const PRESENT_NUMBER = 2;
 const SANTA_SLED = 'santa-sled';
 const PRESENT = 'present';
@@ -24,9 +25,7 @@ function importCode() {
 }
 
 function startAgain() {
-    santaY = startSantaY;
-    santaX = startSantaX;
-    draw();
+    location.reload();
 }
 
 function showCode() {
@@ -117,24 +116,13 @@ function sleep(ms) {
 
 function pickupPresent() {
     if (presents[`${santaY},${santaX}`]) {
-        let table = document.getElementById('field');
-
-        for (let y = 0; y < h; ++y) {
-            let row = document.createElement('tr');
-            for (let x = 0; x < w; ++x) {
-                let col = document.createElement('td');
-                let tile = document.createElement('img');
-
-                tile.src = 'assets/tile.png';
-                col.appendChild(tile);
-                row.appendChild(col);
-            }
-            table.appendChild(row);
-        }
-
         delete presents[`${santaY},${santaX}`];
         field[santaY][santaX] = 0;
     }
+}
+
+function isPresent() {
+    return !!presents[`${santaY},${santaX}`];
 }
 
 function isSuccess() {
